@@ -1,0 +1,34 @@
+@import "variables";
+
+@import "bootstrap";
+
+@import "bootstrap-responsive";
+
+#breadcrumb-text{ color: #555; }
+
+body{ 
+margin-top: 90px;
+height: 100%;
+}
+
+
+.nav-list > .active > a, .nav-list > .active > a:hover { background-color: $default-blue; }
+
+table.dataTable th, .table.dataTable td {
+  line-height: 30px;
+}
+
+table.dataTable tr.odd td.sorting_1 {
+    background-color: #F9F9F9 !important;
+}
+
+table.dataTable tr.even td.sorting_1 {
+    background-color: white !important;
+}
+
+.tab-content{ overflow: hidden;}
+
+.thumbnails:before, .thumbnails:after {
+    content: "";
+    display: inline;
+}

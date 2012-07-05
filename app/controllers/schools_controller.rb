@@ -14,6 +14,10 @@ class SchoolsController < ApplicationController
   # GET /schools/1.json
   def show
     @school = School.find(params[:id])
+    unless (@school.id-1) == 0
+      @previous_school = School.find(@school.id-1)
+    end
+    @next_school = School.find(@school.id+1)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,6 +39,10 @@ class SchoolsController < ApplicationController
   # GET /schools/1/edit
   def edit
     @school = School.find(params[:id])
+    unless (@school.id-1) == 0
+      @previous_school = School.find(@school.id-1)
+    end
+    @next_school = School.find(@school.id+1)
   end
 
   # POST /schools

@@ -112,7 +112,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 2.0.4.0)
+  bootstrap-sass
   coffee-rails (~> 3.2.1)
   jquery-rails
   mysql2
