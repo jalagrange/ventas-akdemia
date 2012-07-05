@@ -1,59 +1,71 @@
 
 <%= form_for(@school, :html => { :class => "form-horizontal"} ) do |f| %>
-<% if @school.errors.any? %>
-<div id="error_explanation">
-	<h2><%= pluralize(@school.errors.count, "error") %> prohibited this school from being saved:</h2>
+	<% if @school.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@school.errors.count, "error") %> prohibited this school from being saved:</h2>
 
-	<ul>
-		<% @school.errors.full_messages.each do |msg| %>
-		<li><%= msg %></li>
+		<ul>
+			<% @school.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<fieldset>
+
+		<div class="control-group">
+			<%= f.label :name, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :name %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :city, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :city %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :state, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :state %>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<%= f.label :email, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :email %>
+			</div>
+		</div>
+			<div class="control-group">
+				<%= f.label :school_system, :class=>"control-label" %>
+				<div class="controls">
+					<%= collection_select(:school, :school_system_id, SchoolSystem.all, :id, :name, :include_blank => 'Please Select') %>
+				</div>
+			</div>
+		
+		<div class="control-group">
+			<%= f.label :phone, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_field :phone %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :address, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_area :address, :rows=>"5" %>
+			</div>
+		</div>
+		<div class="control-group">
+			<%= f.label :note, :class=>"control-label" %>
+			<div class="controls">
+				<%= f.text_area :note, :rows=>"5" %>
+			</div>
+		</div>
+		<fieldset>
+
+		<%= f.submit 'Guardar Colegio', :class => 'btn btn-large btn-primary' %>
+
 		<% end %>
-	</ul>
-</div>
-<% end %>
-
-<fieldset>
-
-	<div class="control-group">
-		<%= f.label :name, :class=>"control-label" %>
-		<div class="controls">
-		<%= f.text_field :name %>
-
-	</div>
-</div>
-</fieldset>
-
-<fieldset>
-
-	<div class="control-group">
-		<%= f.label :city, :class=>"control-label" %>
-		<div class="controls">
-		<%= f.text_field :city %>
-
-	</div>
-</div>
-</fieldset>
-<fieldset>
-
-	<div class="control-group">
-		<%= f.label :state, :class=>"control-label" %>
-		<div class="controls">
-		<%= f.text_field :state %>
-
-	</div>
-</div>
-</fieldset>
-<fieldset>
-
-	<div class="control-group">
-		<%= f.label :email, :class=>"control-label" %>
-		<div class="controls">
-		<%= f.text_field :email %>
-
-	</div>
-</div>
-</fieldset>
-
-<%= f.submit 'Guardar Colegio', :class => 'btn btn-large btn-primary' %>
-
-<% end %>
