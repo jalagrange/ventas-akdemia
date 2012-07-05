@@ -1,8 +1,8 @@
-
-
-<p id="notice"><%= notice %></p>
-
-
+<%unless notice.nil?%>
+<div class="alert alert-info">
+	<p id="notice"><%= notice %></p>
+</div>
+<%end%>
 
 <div class="row-fluid">
 	<div class="span12">
@@ -10,30 +10,51 @@
 		<div class="row-fluid">
 			<div class="span6">
 				<p>
-				  <b>City:</b>
-				  <%= @school.city %>
+					<b>City:</b>
+					<%= @school.city %>
 				</p>
 
 				<p>
-				  <b>State:</b>
-				  <%= @school.state %>
+					<b>State:</b>
+					<%= @school.state %>
+				</p>
+
+				<p>
+					<b>School System:</b>
+					<%unless @school.school_system.nil?%>
+						<%= @school.school_system.name %>
+					<%end%>
+				</p>
+				<p>
+					<b>School Groups:</b>
+					<% @school.school_groups.each do |school_group| %>
+						<%= school_group.name %>
+					<%end%>
 				</p>
 			</div>
 			<div class="span6">
-					<p>
-					  <b>Phone:</b>
-					  <%= @school.phone %>
-					</p>
+				<p>
+					<b>Phone:</b>
+					<%= @school.phone %>
+				</p>
 
-					<p>
-					  <b>Email:</b>
-					  <%= @school.email %>
-					</p>
+				<p>
+					<b>Email:</b>
+					<%= @school.email %>
+				</p>
+				<p>
+					<b>Adress:</b>
+					<%= @school.address %>
+				</p>
+				<p>
+					<b>Note:</b>
+					<%= @school.note %>
+				</p>
 			</div>
 		</div>
 	</div>
 </div>
- 
+
 
 
 
@@ -42,11 +63,11 @@
 <ul class="pager">
 	<%unless @previous_school.nil? %>
 	<li>
-    <%= link_to 'Previous', school_path(@previous_school) %>
-    </li>
+		<%= link_to 'Previous', school_path(@previous_school) %>
+	</li>
 	<%end%>
-    
-    <li>
-    <%= link_to 'Next', school_path(@next_school) %>
-    </li>
-    </ul>
+
+	<li>
+		<%= link_to 'Next', school_path(@next_school) %>
+	</li>
+</ul>
