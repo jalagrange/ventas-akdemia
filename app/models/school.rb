@@ -1,5 +1,5 @@
 class School < ActiveRecord::Base
-  attr_accessible :city, :email, :name, :phone, :state, :note, :address, :school_system_id, :school_group_ids
+  attr_accessible :city, :email, :name, :phone, :state, :note, :address, :school_system_id, :school_group_ids, :number_of_students
   
   
   belongs_to :school_system
