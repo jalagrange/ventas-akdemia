@@ -13,7 +13,12 @@
 <% end %>
 
 <fieldset>
-
+	<div class="control-group">
+		<%= f.label :contact_status, :class=>"control-label" %>
+		<div class="controls">
+			<%= collection_select(:school, :contact_status_id, ContactStatus.all, :id, :name, :include_blank => 'Please Select') %>
+		</div>
+	</div>
 	<div class="control-group">
 		<%= f.label :name, :class=>"control-label" %>
 		<div class="controls">
@@ -59,20 +64,22 @@
 		</div>
 	</div>
 	<div class="control-group">
-		<%= f.label :number_of_students, :class=>"control-label"%>
+		<%= f.label :public, :class=>"control-label"%>
 		<div class="controls">
 			<label class="radio">
-				<%= f.radio_button :number_of_students, 100 %>
-				100
+				<%= f.radio_button :public, true %>
+				Public
 			</label>
 			<label class="radio">
-				<%= f.radio_button :number_of_students, 400 %>
-				400
+				<%= f.radio_button :public, false %>
+				Private
 			</label>
-			<label class="radio">
-				<%= f.radio_button :number_of_students, 700 %>
-				700
-			</label>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :number_of_students, :class=>"control-label" %>
+		<div class="controls">
+			<%= f.text_field :number_of_students %>
 		</div>
 	</div>
 	<div class="control-group">
@@ -88,11 +95,60 @@
 		</div>
 	</div>
 	<div class="control-group">
+		<%= f.label :tuition, :class=>"control-label" %>
+		<div class="controls">
+			<%= f.text_field :tuition %>
+		</div>
+	</div>
+	<div class="control-group">
 		<%= f.label :note, :class=>"control-label" %>
 		<div class="controls">
 			<%= f.text_area :note, :rows=>"5" %>
 		</div>
 	</div>
+	<h3>Sociedad de Padres y Representantes</h3>
+	<%= f.fields_for :guardian do |g|%>
+	<div class="control-group">
+		<%= g.label :name, :class=>"control-label" %>
+		<div class="controls">
+			<%= g.text_field :name %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= g.label :phone, :class=>"control-label" %>
+		<div class="controls">
+			<%= g.text_field :phone %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= g.label :email, :class=>"control-label" %>
+		<div class="controls">
+			<%= g.text_field :email %>
+		</div>
+	</div>
+	<% end %>
+	<h3>Director</h3>
+	<%= f.fields_for :principal do |g|%>
+	<div class="control-group">
+		<%= g.label :name, :class=>"control-label" %>
+		<div class="controls">
+			<%= g.text_field :name %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= g.label :phone, :class=>"control-label" %>
+		<div class="controls">
+			<%= g.text_field :phone %>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= g.label :email, :class=>"control-label" %>
+		<div class="controls">
+			<%= g.text_field :email %>
+		</div>
+	</div>
+	<% end %>
+	
 	<% #binding.pry%>
 
 

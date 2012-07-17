@@ -29,6 +29,9 @@ class SchoolsController < ApplicationController
   # GET /schools/new.json
   def new
     @school = School.new
+    @guardian = @school.build_guardian
+    @principal = @school.build_principal
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,6 +42,10 @@ class SchoolsController < ApplicationController
   # GET /schools/1/edit
   def edit
     @school = School.find(params[:id])
+    if @school.guardian.nil?
+      @guardian = @school.build_guardian
+      @principal = @school.build_principal
+    end
     unless (@school.id-1) == 0
       @previous_school = School.find(@school.id-1)
     end
@@ -64,14 +71,15 @@ class SchoolsController < ApplicationController
   # PUT /schools/1
   # PUT /schools/1.json
   def update
+    #raise params.to_yaml
     @school = School.find(params[:id])
-
+    binding.pry
     respond_to do |format|
       if @school.update_attributes(params[:school])
         format.html { redirect_to @school, notice: 'School was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render :edit }
         format.json { render json: @school.errors, status: :unprocessable_entity }
       end
     end

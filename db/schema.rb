@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705230554) do
+ActiveRecord::Schema.define(:version => 20120717221945) do
+
+  create_table "contact_statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "guardians", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "school_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "principals", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "school_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "school_groups", :force => true do |t|
     t.string   "name"
@@ -44,6 +68,9 @@ ActiveRecord::Schema.define(:version => 20120705230554) do
     t.datetime "updated_at",         :null => false
     t.integer  "school_system_id"
     t.integer  "number_of_students"
+    t.float    "tuition"
+    t.boolean  "public"
+    t.integer  "contact_status_id"
   end
 
 end

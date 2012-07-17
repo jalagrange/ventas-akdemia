@@ -14,12 +14,12 @@
 	<ul class="pager">
 		<%unless @previous_school.nil? %>
 		<li>
-			<%= link_to 'Previous', edit_school_path(@previous_school) %>
+			<%= link_to 'Previous', edit_school_path(@school.previous) %>
 		</li>
 		<%end%>
 
 		<li>
-			<%= link_to 'Next', edit_school_path(@next_school) %>
+			<%= link_to 'Next', edit_school_path(@school.next) %>
 		</li>
 	</ul>
 </div>
