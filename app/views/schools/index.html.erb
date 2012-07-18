@@ -28,6 +28,7 @@
     <th>State</th>
     <th>Phone</th>
     <th>Email</th>
+		<th>Status</th>
     <th></th>
     <th></th>
     <th></th>
@@ -41,6 +42,11 @@
     <td><%= school.state %></td>
     <td><%= school.phone %></td>
     <td><%= school.email %></td>
+		<td>
+		<% unless school.contact_status.nil?%>
+			<%= school.contact_status.name %>
+		<%end%>
+			</td>
     <td><%= link_to 'Show', school %></td>
     <td><%= link_to 'Edit', edit_school_path(school) %></td>
     <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
