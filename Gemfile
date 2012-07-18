@@ -5,6 +5,14 @@ gem 'rails', '3.2.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# Rails 3.1 - Heroku
+group :production do
+  gem "heroku"
+  gem 'pg'
+  gem 'newrelic_rpm'
+end
+
+
 gem 'mysql2'
 gem 'nokogiri'
 gem 'pry'
