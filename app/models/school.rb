@@ -12,7 +12,8 @@ class School < ActiveRecord::Base
   
   accepts_nested_attributes_for :principal, :guardian
   
-  validates_presence_of :contact_status_id, :city, :email, :name, :phone, :state, :school_system_id, :number_of_students, :is_public
+  validates_presence_of :contact_status_id, :city, :email, :name, :phone, :state, :school_system_id, :number_of_students
+  validates_inclusion_of :is_public, :in=> [true,false]
   
   def previous
     School.find_by_id(self.id - 1)

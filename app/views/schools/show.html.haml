@@ -7,9 +7,9 @@
 		%h1
 			= @school.name
 		%h2
-			= if @school.is_public == true
+			- if @school.is_public == true
 				Publica
-			= if @school.is_public == false
+			- if @school.is_public == false
 				Privada
 		%br
 		.span5

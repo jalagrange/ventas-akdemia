@@ -71,12 +71,11 @@ class SchoolsController < ApplicationController
   # PUT /schools/1
   # PUT /schools/1.json
   def update
-    #raise params.to_yaml
     @school = School.find(params[:id])
 
     respond_to do |format|
       if @school.update_attributes(params[:school])
-        format.html { redirect_to @school, notice: 'School was successfully updated.' }
+        format.html { redirect_to @school, notice: 'Se guardo el colegio con exito' }
         format.json { head :no_content }
       else
         format.html { render :edit }
