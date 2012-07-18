@@ -16,7 +16,7 @@ end
 gem 'mysql2'
 gem 'nokogiri'
 gem 'pry'
-
+gem 'taps'
 
 
 # Gems used only for assets and not required
