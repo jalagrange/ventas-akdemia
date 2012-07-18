@@ -66,6 +66,6 @@ VentasAkdemia::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w( dataTables.bootstrapPagination.js public.css  )
+  #config.assets.precompile += %w( dataTables.bootstrapPagination.js )
   
 end
