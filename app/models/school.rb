@@ -1,6 +1,6 @@
 class School < ActiveRecord::Base
   attr_accessible :city, :email, :name, :phone, :state, :note, :address, :school_system_id, :school_group_ids, :number_of_students
-  attr_accessible :public, :tuition, :guardian_attributes, :principal_attributes, :contact_status_id
+  attr_accessible :is_public, :tuition, :guardian_attributes, :principal_attributes, :contact_status_id
   
   
   belongs_to :school_system
@@ -12,7 +12,7 @@ class School < ActiveRecord::Base
   
   accepts_nested_attributes_for :principal, :guardian
   
-  validates_presence_of :contact_status_id, :city, :email, :name, :phone, :state, :school_system_id, :number_of_students, :public
+  validates_presence_of :contact_status_id, :city, :email, :name, :phone, :state, :school_system_id, :number_of_students, :is_public
   
   def previous
     School.find_by_id(self.id - 1)

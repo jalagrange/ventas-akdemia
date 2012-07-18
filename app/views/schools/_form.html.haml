@@ -1,0 +1,37 @@
+
+%br
+%br
+.row-fluid
+= simple_form_for(@school, :html => { :class => "form-horizontal"} ) do |f|
+
+	.span5
+		%fieldset
+			= f.input(:contact_status_id, :collection => ContactStatus.all, :include_blank => 'Please Select', :label => 'Estatus de Contacto')
+			= f.input :name, :label => 'Nombre'
+			= f.input :city, :label => 'Ciudad'
+			= f.input :state, :label => 'Estado'
+			= f.input :email
+			= f.input(:school_system_id, :collection => SchoolSystem.all, :include_blank => 'Please Select', :label => 'Sistema de Informacion')
+			= f.input :phone, :label => 'Telefono'
+			= f.input :address, :as => :text, :input_html => {:rows=>"5"}, :label => 'Direccion'
+			= f.input :is_public, :as => :radio_buttons, :collection => [["Publica", true], ["Privada", false]], :label => 'Tipo de Institucion' 
+			= f.input :number_of_students, :as => :integer, :label => 'Numero de Estudiantes'
+			= f.input :school_group_ids, :collection =>  SchoolGroup.all , :as => :check_boxes, :label => 'Tipo de Colegio'
+			= f.input :tuition, :label => 'Costo de la matricula'
+			= f.input :note, :as => :text, :input_html => {:rows=>"5"}, :label => 'Nota'
+	.span5
+		%fieldset
+			%h3 Sociedad de Padres y Representantes
+			= f.fields_for :guardian do |g|
+				= g.input :name, :label => 'Nombre'
+				= g.input :phone, :label => 'Telefono'
+				= g.input :email
+			%h3 Director
+			= f.fields_for :principal do |g|
+				= g.input :name, :label => 'Nombre'
+				= g.input :phone, :label => 'Telefono'
+				= g.input :email
+			= f.submit 'Guardar Colegio', :class => 'btn btn-large btn-primary'
+			= link_to 'Ir a Perfil', @school, :class=> "btn"
+
+	

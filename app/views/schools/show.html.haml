@@ -1,0 +1,88 @@
+- flash.each do |name, msg|
+	%div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+		%a.close{"data-dismiss" => "alert"} ×
+		= msg
+.row-fluid
+	.span12
+		%h1
+			= @school.name
+		%h2
+			= if @school.is_public == true
+				Publica
+			= if @school.is_public == false
+				Privada
+		%br
+		.span5
+			%h3
+				Datos del Colegio
+			%p
+				%b Numero de Estudiantes:
+				= @school.number_of_students
+			%p	
+				%b Ciudad:
+				= @school.city
+			%p
+				%b Estado:
+				= @school.state
+			%p
+				%b Sistema escolar:
+				- unless @school.school_system.nil?
+					= @school.school_system.name
+			%p
+				%b Tipo de Colegio:
+				%ul
+				- @school.school_groups.each do |school_group|
+					%li
+						= school_group.name
+			%p
+				%b Telefono:
+				= @school.phone
+			%p
+				%b Email:
+				= @school.email
+			%p
+				%b Direccion:
+				= @school.address
+			%p
+				%b Nota:
+				= @school.note
+			%br
+		.span6
+			%h3
+				Sociedad de Padres y Representantes
+			%p
+				%b Nombre de representante:
+				- unless @school.guardian.nil?
+					= @school.guardian.name
+			%p		
+				%b Email de representante:
+				- unless @school.guardian.nil?
+					= @school.guardian.email
+			%p	
+				%b Telefono:
+				- unless @school.guardian.nil?
+					= @school.guardian.phone
+			%h3
+				Director
+			%p
+				%b Nombre de representante:
+				- unless @school.guardian.nil?
+					= @school.guardian.name
+			%p		
+				%b Email de representante:
+				- unless @school.guardian.nil?
+					= @school.guardian.email
+			%p	
+				%b Telefono:
+				- unless @school.guardian.nil?
+					= @school.guardian.phone
+.row-fluid
+	.span12
+					
+		= link_to 'Edit', edit_school_path(@school), :class=> "btn"
+		%ul.pager
+			- unless @previous_school.nil?
+				%li
+					= link_to 'Previous', school_path(@previous_school)
+				%li
+					= link_to 'Next', school_path(@next_school)

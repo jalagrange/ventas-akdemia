@@ -73,7 +73,7 @@ class SchoolsController < ApplicationController
   def update
     #raise params.to_yaml
     @school = School.find(params[:id])
-    binding.pry
+
     respond_to do |format|
       if @school.update_attributes(params[:school])
         format.html { redirect_to @school, notice: 'School was successfully updated.' }
